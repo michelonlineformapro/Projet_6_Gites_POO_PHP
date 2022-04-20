@@ -1,4 +1,15 @@
+# La directive RewriteEngine active ou désactive l'exécution du moteur de réécriture.
 RewriteEngine on
+#REQUEST_FILENAME contiennent toutes deux la valeur du champ filename de la structure interne request_recdu serveur HTTP Apache
+# !-f est un fichier régulier
+#Traite chaîne_de_test comme un chemin et vérifie s'il existe ou pas, et s'il s'agit d'un fichier régulier.
 RewriteCond %{REQUEST_FILENAME} !-f
-
+#Tous les fichiers avec une extenssion.*
+#Le fichier de route index.php + $_GET['url'] + flag QSA et L
+# Quand l'URI de remplacement contient une chaîne de requête,
+# le comportement par défaut de la règle RewriteRule est de supprimer
+#la query string (il s'agit des paramètres éventuellement passés dans l'URL après le caractère ?,
+#usuellement pour les formulaires traités par la méthode HTTP GET) existante,
+#et de la remplacer par celle nouvellement créée. Avec le drapeau [QSA],
+#les chaînes de requête peuvent être combinées.
 RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
