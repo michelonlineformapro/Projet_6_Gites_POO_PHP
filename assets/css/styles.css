@@ -1,0 +1,9 @@
+@import "bootstrap.css";
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #a23e20;
+}
+
+/*# sourceMappingURL=styles.css.map */
