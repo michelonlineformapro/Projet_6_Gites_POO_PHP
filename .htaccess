@@ -1,3 +1,9 @@
+#LA DOCS
+# LA REECRITURE
+#https://httpd.apache.org/docs/2.4/fr/mod/mod_rewrite.html
+# LES DRAPEAUX = flags
+# https://httpd.apache.org/docs/2.4/fr/rewrite/flags.html
+
 # La directive RewriteEngine active ou désactive l'exécution du moteur de réécriture.
 RewriteEngine on
 #REQUEST_FILENAME contiennent toutes deux la valeur du champ filename de la structure interne request_recdu serveur HTTP Apache
