@@ -26,7 +26,13 @@ if($url === "accueil"){
     $title  = "Mic Location -ERREUR-";
     require_once "vues/404.php";
     //Si $url est différent de tableau de valeurs [#:0-9A-Za-z]
-}elseif($url !=  '#:[\w]+)#'){
+}elseif ($url === "page-de-test"){
+    $title  = "Mic Location -PAGE TEST-";
+    require_once "vues/test.php";
+}
+
+
+elseif($url !=  '#:[\w]+)#'){
     //On redirige vers la page d'accueil
     header("Location: accueil");
 }
