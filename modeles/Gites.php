@@ -1,18 +1,22 @@
 <?php
+require_once "modeles/Database.php";
+class Gites extends Database {
 
-//Php strcit a typé
-declare(strict_types=1);
+    private $nom_gite;
+    //toutes les données de ta table gites
+    public function getGites(){
 
-class Gites
-{
-    //PROPRIETES = VARIABLES
-    public string $nom_gite;
-    public float $prix_gite;
+        //Appel de la methode getPDO de la classe Database.php
+        $db = $this->getPDO();
+        $sql = "SELECT * FROM gites";
 
-    public function getGites(string $nom, float $prix){
+        $gites = $db->query($sql);
 
+        return $gites;
 
-        echo "Le gite creer s'appel " . $nom . " et le prix a la semaine est de  " . $prix. " €";
     }
+
+
+
 
 }

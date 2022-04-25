@@ -26,18 +26,13 @@ if($url === "accueil"){
     $title  = "Mic Location -ERREUR-";
     require_once "vues/404.php";
     //Si $url est différent de tableau de valeurs [#:0-9A-Za-z]
-}elseif ($url === "page-de-test"){
-    $title  = "Mic Location -PAGE TEST-";
-    require_once "vues/test.php";
 }
-
-
 elseif($url !=  '#:[\w]+)#'){
     //On redirige vers la page d'accueil
     header("Location: accueil");
 }
 /*
- * ob_get_clean — Lit le contenu courant du tampon de sortie puis l'efface
+ * ob_get_clean — Lit le contenu courant du tampon (du cache)de sortie puis l'efface
  */
 //ici $content se situe dans le dossier template.php
 $content = ob_get_clean();

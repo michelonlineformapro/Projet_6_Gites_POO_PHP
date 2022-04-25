@@ -1,11 +1,25 @@
 <?php
+require_once "modeles/Gites.php";
 
-echo "La page d'accueil";
+//Instance de la classe Gites = copie de la classe stockée dans une variable
+$gitesClasse = new Gites();
+
+$gites = $gitesClasse->getGites();
+var_dump($gites);
 
 ?>
-<p>Salut page d'accueil</p>
+<div class="row">
+<?php
+foreach ($gites as $gite) {
+    ?>
+    <div class="col-md-3 col-sm-12">
+        <p>NOM du gites ! <?= $gite['nom_gite'] ?></p>
+    </div>
 
-<i class="bi bi-apple"></i>
+    <?php
+}
+?>
+</div>
 
 
-<a href="404">Lien vers la page 404</a>
+
