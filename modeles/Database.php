@@ -43,7 +43,7 @@ class Database
         }catch (PDOException $e){
             echo "erreur de connexion " .$e->getMessage();
         }
-        //Si le try catch ne retourne rien la fonction retouirne null
+        //Si le try catch ne retourne rien la fonction retourne null
         return null;
     }
 

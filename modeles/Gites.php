@@ -6,6 +6,7 @@ require_once "modeles/Database.php";
 //De tous ses prorpiétés (variables) et de toutes ses methodes (fonctions)
 class Gites extends Database {
 
+    private $nom_gite;
     //Cette methode est destinée a recupérer tous les gites de la table phpMyADmin
     public function getGites(){
         //Appel de la methode getPDO de la classe MERE Database.php
@@ -20,8 +21,7 @@ class Gites extends Database {
         return $gites;
 
     }
-
-
-
-
 }
+
+?>
+
