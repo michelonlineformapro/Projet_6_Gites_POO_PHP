@@ -10,6 +10,7 @@ class Categories extends Database
 
         $categories = $db->query($sql);
         return $categories;
+
     }
 
 }

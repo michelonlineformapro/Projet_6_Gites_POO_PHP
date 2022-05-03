@@ -6,7 +6,9 @@ require_once "modeles/Database.php";
 //De tous ses prorpiétés (variables) et de toutes ses methodes (fonctions) son accessibles depuis la Classe Gites
 class Gites extends Database {
 
+    private $id_gite;
     private $nom_gite;
+    
     //Cette methode est destinée a recupérer tous les gites de la table phpMyADmin
     public function getGites(){
         //Appel de la methode getPDO de la classe MERE Database.php
@@ -52,7 +54,23 @@ class Gites extends Database {
     }
 
     public function setGites(){
+        if(isset($_POST["nom_gite"]) && !empty($_POST["nom_gite"])){
+            $this->nom_gite = trim(htmlspecialchars($_POST['nom_gite']));
+        }else{
+            echo "Merci de remplir le champ";
+        }
 
+        //Uploade de photo
+
+        $sql = "INSERT INTO `gites`(`id_gite`, `nom_gite`, `description_gite`, `img_gite`, `prix_gite`, `nbr_chambre`, `nbr_sdb`, `disponible`, `zone_geo`, `date_arrivee`, `date_depart`, `gite_categorie`, `commentaire_id`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7],[value-8],[value-9],[value-10],[value-11],[value-12],[value-13])";
+
+        //requète préparée
+
+        //Le bind de paramètres
+
+        //execution de la requète
+
+        //redirection page accueil
     }
 }
 
