@@ -80,7 +80,7 @@ class Administration extends Database
                     //Demarre la seesion
                     session_start();
                     //Booléen pour verifié si on est connecté
-                    $_SESSION['connecter'] = true;
+                    $_SESSION['connecter_admin'] = true;
                     $_SESSION['email_admin'] = $this->email_admin;
                     //La redirection
                     header('Location: administration');

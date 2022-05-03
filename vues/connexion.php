@@ -18,7 +18,7 @@ $userClasse = new Utilisateurs();
 <div id="form-admin">
     <?php
     //Si on est connecter en tant qu'administrateur
-    if(isset($_SESSION['connecter']) && $_SESSION['connecter'] === true){
+    if(isset($_SESSION['connecter_admin']) && $_SESSION['connecter_admin'] === true){
         //On redirige vers la page vues/administration.php
         header("administration");
     }else{
@@ -74,7 +74,7 @@ $userClasse = new Utilisateurs();
         </form>
 
         <?php
-        //Au clic on appel la methode de connexion de la classe Utilisateur
+        //Au clic on appel la methode de connexion de la classe Utilisateur->connexionUtilisateurs()
         if(isset($_POST['btn_valid_user'])){
             $userClasse->connexionUtilisateur();
         }

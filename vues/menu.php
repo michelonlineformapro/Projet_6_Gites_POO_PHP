@@ -25,7 +25,7 @@
                         <h4 class="text-danger mt-1"><b style="color: #2c4f56;font-size: 14px">Vous êtes connectez en tant que  :</b> <?= $_SESSION['email_user']  ?></h4>
                         <?php
                     //Sinon si on est connecter en tant qu'adminsitrateur = on affiche un onglet administation + email de l'administrateur dans la navbar
-                    }elseif(isset($_SESSION['connecter']) && $_SESSION['connecter'] === true){
+                    }elseif(isset($_SESSION['connecter_admin']) && $_SESSION['connecter_admin'] === true){
                         ?>
                         <div class="d-flex">
                             <a class="nav-link" href="administration">ADMINISTRATION</a>
@@ -46,7 +46,7 @@
                 <a class="nav-link btn btn-secondary mr-3" href="inscription">INSCRIPTION</a>
                 <?php
                 //Sin on est connecter en tant qu'utilisateur ou administrateur = le bouton connexion devient deconnexion et reciproquement
-                if(isset($_SESSION['connecter']) && $_SESSION['connecter'] === true || isset($_SESSION['connecter_user']) && $_SESSION['connecter_user'] === true){
+                if(isset($_SESSION['connecter_admin']) && $_SESSION['connecter_admin'] === true || isset($_SESSION['connecter_user']) && $_SESSION['connecter_user'] === true){
                     ?>
                     <a class="nav-link btn btn-danger" href="deconnexion">DECONNEXION</a>
                     <?php

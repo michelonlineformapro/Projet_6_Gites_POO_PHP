@@ -6,4 +6,28 @@ html, body {
   box-sizing: border-box;
 }
 
+/*PAGE ACCUEIL + ADMINISTRATION*/
+.card {
+  height: 100%;
+}
+
+/*************************LES FORMULAIRE DE CONNEXION********************/
+#form-admin {
+  opacity: 0;
+  transition: opacity 0.5s linear;
+}
+
+#form-user {
+  opacity: 0;
+  transition: opacity 0.5s linear;
+}
+
+#form-admin.show {
+  opacity: 1;
+}
+
+#form-user.show {
+  opacity: 1;
+}
+
 /*# sourceMappingURL=styles.css.map */

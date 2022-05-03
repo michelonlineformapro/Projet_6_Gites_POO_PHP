@@ -2,6 +2,8 @@
 //Appel du fichier de la classe Gites.php
 require_once "modeles/Gites.php";
 
+
+
 //Instance de la classe Gites = copie de la classe stockée dans une variable
 $gitesClasse = new Gites();
 //On stock dans une seconde variable l'appel a la methode getGites() = le resultat de la requète SQL

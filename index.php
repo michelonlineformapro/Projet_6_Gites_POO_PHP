@@ -43,14 +43,23 @@ elseif ($url === "deconnexion"){
     require_once "vues/deconnexion.php";
 }
 ////Si la route $url : index.php?url=administration et on est connecter en tant qu'admin
-else if($url === "administration" && isset($_SESSION['connecter']) && $_SESSION['connecter'] === true){
+else if($url === "administration" && isset($_SESSION['connecter_admin']) && $_SESSION['connecter_admin'] === true){
     $title = "Mic location -Adminsitration-";
     require_once "vues/administration.php";
+    //Si la routes details gites et id_gite existe + id_gite > 0
+    //Dans la page administration.php <a href="details_gite?id_gite=<?= $gite['id_gite'] ? >" class="btn btn-info">Details du gite</a>
+}elseif($url === "details_gite" && isset($_GET['id_gite']) && $_GET['id_gite'] > 0){
+    $title = "Mic location -Adminsitration Details Gite-";
+    require_once "vues/details_gite.php";
+}elseif($url === "ajouter-gite" && isset($_SESSION['connecter_admin']) && $_SESSION['connecter_admin'] === true){
+    $title = "Mic location -Adminsitration Ajouter un Gite-";
+    require_once "vues/ajouter-gite.php";
 }
+
 
 //Si la route $url n'est pas formée de [#: A-Z a-z O-9] soit index.php?url=NON VALIDE
 //On effectue une redirection
-elseif($url !=  '#:[\w]+)#'){
+elseif($url !=  '#:@&-[\w]+)#'){
     //On redirige vers la page d'accueil
     header("Location: accueil");
 }
