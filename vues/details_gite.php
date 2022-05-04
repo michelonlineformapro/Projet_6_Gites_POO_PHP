@@ -22,12 +22,21 @@ $details = $giteClasse->getGiteById();
             //si session connecter retourne la page d'accueil
             if(isset($_SESSION['connecter_admin']) && $_SESSION['connecter_admin'] === true){
                 ?>
-                <a href="administration" class="btn btn-danger mt-2">RETOUR</a>
+                <a href="administration" class="btn btn-danger mt-3">RETOUR</a>
+                <form method="post" class="mt-3">
+                    <button name="bnt-delete-gite" class="btn btn-success">Supprimer le gite</button>
+                </form>
+
                 <?php
+                if(isset($_POST['bnt-delete-gite'])){
+                    var_dump("test de clic");
+                    $giteClasse->deleteGite();
+                }
             }else{
                 ?>
                 <a href="accueil" class="btn btn-danger mt-2">RETOUR</a>
                 <?php
+
             }
 
             //Si utilisateur est connecté on peu ajouter un commentaire
@@ -70,7 +79,6 @@ $details = $giteClasse->getGiteById();
 
             <p><b>Date du dernier depart : </b></p>
             <p class="alert-info p-2"> <?=  $date_d->format('d-m-Y')?></p>
-
         </div>
     </div>
 </div>

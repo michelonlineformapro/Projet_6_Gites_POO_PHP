@@ -1,12 +1,19 @@
 <?php
+//Appel des 3 fichier de classes
 require_once "modeles/Categories.php";
 require_once "modeles/Regions.php";
+require_once "modeles/Gites.php";
 
+//Instance = copie de la classe dans une variable
 $categorieClasse = new Categories();
 $regionsClasse = new Regions();
+$giteClasse = new Gites();
 
+//Appel des methode GET -> query des categories et regions stocké dans dans des variables
+//Puis affcicher dans une fenètre deroulante et une boucle foreach
 $categories = $categorieClasse->getCategories();
 $regions = $regionsClasse->getRegions();
+
 
 ?>
 <div class="container">
@@ -54,14 +61,12 @@ $regions = $regionsClasse->getRegions();
         </div>
 
         <div class="mt-3">
-            <label for="regions">Choix de la  catégorie
+            <label for="regions">Choix de la region
                 <select name="zone_geo" class="form-control">
                     <?php
-                    foreach ($categories as $category){
+                    foreach ($regions as $region){
                         ?>
-                        <option value="<?= $category['id_categorie'] ?>">
-                            <?= $category['type_gite'] ?>
-                        </option>
+                        <option value="<?= $region['id_region'] ?>"><?= $region['nom_region'] ?></option>
                         <?php
                     }
                     ?>
@@ -71,12 +76,12 @@ $regions = $regionsClasse->getRegions();
 
         <div class="mt-3">
             <label for="categories">Choix de la  catégorie
-                <select name="categories" class="form-control">
+                <select name="type_gite" class="form-control">
                     <?php
-                        foreach ($regions  as $region){
+                        foreach ($categories  as $category){
                             ?>
-                            <option value="<?= $region['id_region'] ?>">
-                                <?= $region['nom_region'] ?>
+                            <option value="<?= $category['id_categorie'] ?>">
+                                <?= $category['type_gite'] ?>
                             </option>
                     <?php
                         }
@@ -108,18 +113,16 @@ $regions = $regionsClasse->getRegions();
             <label for="date_depart">Date de depart</label>
             <input type="date" class="form-control" name="date_depart" id="date_depart" placeholder="<?= date('Y-m-d') ?>" value="<?= date('Y-m-d') ?>" required>
         </div>
-
-        <input type="hidden" name="commentaires" value="0">
+        <!--Ce champs est caché Admin na pas renseigner de commentaire sur le gite sa valeur par defaut est 1-->
+        <input type="hidden" name="commentaires" value="1">
 
         <button type="submit" name="btn-ajouter-gite" class="btn btn-outline-success">Ajouter le gite</button>
     </form>
 
     <?php
     if(isset($_POST['btn-ajouter-gite'])){
-        echo "ca marche";
+        $giteClasse->setGites();
+        //var_dump($_POST['commentaires']);
     }
     ?>
-
-
-
 </div>

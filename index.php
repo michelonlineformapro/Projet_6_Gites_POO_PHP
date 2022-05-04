@@ -51,9 +51,18 @@ else if($url === "administration" && isset($_SESSION['connecter_admin']) && $_SE
 }elseif($url === "details_gite" && isset($_GET['id_gite']) && $_GET['id_gite'] > 0){
     $title = "Mic location -Adminsitration Details Gite-";
     require_once "vues/details_gite.php";
+    //Pour ajouter un gite => on impose une connexion $_SESSION['']
 }elseif($url === "ajouter-gite" && isset($_SESSION['connecter_admin']) && $_SESSION['connecter_admin'] === true){
     $title = "Mic location -Adminsitration Ajouter un Gite-";
     require_once "vues/ajouter-gite.php";
+    //IDEM pour la page de confirmation d'ajout
+}elseif ($url === "confirmer-ajout-gite" && isset($_SESSION['connecter_admin']) && $_SESSION['connecter_admin'] === true){
+    $title = "Mic location -Confirmer Ajouter un Gite-";
+    require_once "vues/confirmer-ajout-gite.php";
+    //IDEM pour la page de confirmation de supression
+}elseif($url === "supprimer-gite" && isset($_SESSION['connecter_admin']) && $_SESSION['connecter_admin'] === true){
+    $title = "Mic location -Supprimer Ajouter un Gite-";
+    require_once "vues/supprimer-gite.php";
 }
 
 

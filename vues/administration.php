@@ -1,17 +1,13 @@
 <?php
 require_once "modeles/Gites.php";
-
 //Instance = copie de la stockée dans une vaiable
 $giteClasse = new Gites();
-
 //On stocke dans une variable le resulatat de la requètes SQL
-
 $gites = $giteClasse->getGites();
-
 ?>
-<div class="container-fluid bg-primary mt-3 rounded p-3">
+<div class="container-fluid mt-3 rounded p-3">
     <div class="text-center">
-        <h2 class="text-warning p-3">ESPACE ADMINISTRATION : Liste de nos gites</h2>
+        <h2 class="text-info p-3">ESPACE ADMINISTRATION : Liste de nos gites</h2>
         <div class="text-center">
             <a href="ajouter-gite" class="btn btn-danger">AJOUTER UN GITE</a>
         </div>

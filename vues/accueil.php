@@ -29,7 +29,6 @@ foreach ($gites as $row) {
             </div>
         </div>
     </div>
-
     <?php
 }
 ?>
