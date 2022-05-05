@@ -63,6 +63,9 @@ else if($url === "administration" && isset($_SESSION['connecter_admin']) && $_SE
 }elseif($url === "supprimer-gite" && isset($_SESSION['connecter_admin']) && $_SESSION['connecter_admin'] === true){
     $title = "Mic location -Supprimer Ajouter un Gite-";
     require_once "vues/supprimer-gite.php";
+}elseif($url === "confirmer-maj-gite" && isset($_SESSION['connecter_admin']) && $_SESSION['connecter_admin'] === true){
+    $title = "Mic location -Mise a jour d' un Gite-";
+    require_once "vues/confirmer-maj-gite.php";
 }
 
 

@@ -38,8 +38,9 @@ $regions = $regionsClasse->getRegions();
         </div>
 
         <div class="mt-3">
-            <label for="nbr_chambres">Choix de la  catégorie
+            <label for="nbr_chambres">Choix du nombre de chambre
                 <select name="nbr_chambre" class="form-control">
+                    <option selected>Nombre de chambre</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -51,8 +52,9 @@ $regions = $regionsClasse->getRegions();
         </div>
 
         <div class="mt-3">
-            <label for="nbr_sdb">Choix de la  catégorie
+            <label for="nbr_sdb">Choix du nombre de salle de bains
                 <select name="nbr_sdb" class="form-control">
+                    <option selected>Nombre de salle de bains</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>

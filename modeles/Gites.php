@@ -256,6 +256,166 @@ class Gites extends Database {
             echo "<p class='alert-warning p-2'>Une erreur est survenue duarant la supression de cet élément.</p>";
         }
     }
+
+    //mettre a un jour un gite
+    public function updateGite(){
+        //recup de la connexion a la base de donnée via la methode getPDO de la classe mere
+        $db = $this->getPDO();
+        //On verifie tous les champs du formulaires existe et ne sont pas vide
+        //On assigne les $_POST[] = attribut HTML name="" au propriétés privées (variables)
+        if(isset($_POST['nom_gite'])){
+            $this->nom_gite = trim(htmlspecialchars($_POST['nom_gite']));
+        }else{
+            echo "<p class='alert-danger p-2'>Merci de remplir le champ nom du gite</p>";
+        }
+
+        //LA DESCRIPTION
+        if(isset($_POST['description_gite'])){
+            $this->description_gite = trim(htmlspecialchars($_POST['description_gite']));
+        }else{
+            echo "<p class='alert-danger p-2'>Merci de remplir le champ description du gite</p>";
+        }
+
+        //UPLOAD D' IMAGE
+        if(isset($_FILES['img_gite'])){
+            $dossierDestination = "assets/img/";
+            $img_gite = $dossierDestination. basename($_FILES['img_gite']['name']);
+            $_POST['img_gite'] = $img_gite;
+            if(move_uploaded_file($_FILES['img_gite']['tmp_name'], $img_gite)){
+                echo '<p class="alert alert-success">Le fichier est valide et à été téléchargé avec succès !</p>';
+            }else{
+                echo '<p class="alert-danger">Une erreur s\'est produite, le fichier n\'est pas valide !</p>';
+            }
+        }
+
+        //LE POSTE DE L'IMAGE
+        if(isset($_POST['img_gite'])){
+            $this->img_gite = $_POST['img_gite'];
+        }else{
+            echo "<p class='alert-danger p-2'>Merci de remplir le champ image du gite</p>";
+        }
+
+        //LE NOMBRE DE CHAMBRE
+        if(isset($_POST['nbr_chambre'])){
+            $this->nbr_chambre = $_POST['nbr_chambre'];
+        }else{
+            echo "<p class='alert-danger p-2'>Merci de remplir le champ nombre de chambre</p>";
+        }
+        //LE NOMBRE DE SALLE DE BAINS
+        if(isset($_POST['nbr_sdb'])){
+            $this->nbr_sdb= $_POST['nbr_sdb'];
+        }else{
+            echo "<p class='alert-danger p-2'>Merci de remplir le champ nombre de salle de bain</p>";
+        }
+
+        //LA REGION DE FRANCE
+        if(isset($_POST['zone_geo'])){
+            $this->zone_geo = $_POST['zone_geo'];
+        }else{
+            echo "<p class='alert-danger p-2'>Merci de remplir le champ departement</p>";
+        }
+        //LE PRIX DU GITE / SEMAINE
+        if(isset($_POST['prix_gite'])){
+            $this->prix = $_POST['prix_gite'];
+        }else{
+            echo "<p class='alert-danger p-2'>Merci de remplir le champ prix du gite</p>";
+        }
+
+        //LE BOOLEESN GITE DISPO OU NON
+        if(isset($_POST['disponible'])){
+            $this->disponible = $_POST['disponible'];
+        }else{
+            echo "<p class='alert-danger p-2'>Merci de remplir le champ disponible</p>";
+        }
+
+        //LA DATE DE DISPO DU GITE
+        if(isset($_POST['date_arrivee'])){
+            $this->date_arrivee = $_POST['date_arrivee'];
+        }else{
+            echo "<p class='alert-danger p-2'>Merci de remplir le champ date d'arrivée</p>";
+        }
+        //LA DERNIERE DATE DE FIN DE LOCATION
+        if(isset($_POST['date_depart'])){
+            $this->date_depart = $_POST['date_depart'];
+        }else{
+            echo "<p class='alert-danger p-2'>Merci de remplir le champ date de depart</p>";
+        }
+
+        //Cle etrangère gite categorie
+
+        if(isset($_POST['type_gite'])){
+            $this->type_gite = $_POST['type_gite'];
+        }else{
+            echo "<p class='alert-danger p-2'>Merci de remplir le champ type de gite</p>";
+        }
+
+        //LES COMMENTAIRES = champs caché avec valeurs par defaut
+
+        if(isset($_POST['commentaires'])){
+            $this->id_commentaire = $_POST['commentaires'];
+        }else{
+            echo "<p class='alert-danger p-2'>Merci de remplir le champ commentaire de gite</p>";
+        }
+
+        //Verifié que la date d'arrivée n'est pas supérieur à la date départ = une erreur
+        if(isset($this->date_depart) > isset($this->date_arrivee)){
+            echo "<p class='alert-danger p-2'>ATTENTION : la date d'arrivée est supérieur à la date de part !</p>";
+        }
+
+        $sql = "UPDATE gites SET 
+                 nom_gite = ?, 
+                 description_gite = ?, 
+                 img_gite = ?, 
+                 nbr_chambre = ?, 
+                 nbr_sdb = ?, 
+                 zone_geo = ?, 
+                 prix_gite = ?, 
+                 disponible = ?, 
+                 date_arrivee = ?, 
+                 date_depart = ?, 
+                 gite_categorie = ?, 
+                 commentaire_id = ? 
+                WHERE id_gite = ?";
+
+        //Recup de la cle primaire dans url via la super globale =_GET['']
+        //<a href="details_gite?id_gite=CLE PRIMAIRE DU GITE">Plus d'infos</a>
+        $id = $_GET['id_gite'];
+        $req = $db->prepare($sql);
+        $req->bindParam(1, $this->nom_gite);
+        $req->bindParam(2, $this->description_gite);
+        $req->bindParam(3, $this->img_gite);
+        $req->bindParam(4, $this->nbr_chambre);
+        $req->bindParam(5, $this->nbr_sdb);
+        $req->bindParam(6, $this->zone_geo);
+        $req->bindParam(7, $this->prix);
+        $req->bindParam(8, $this->disponible);
+        $req->bindParam(9, $this->date_arrivee);
+        $req->bindParam(10, $this->date_depart);
+        $req->bindParam(11, $this->type_gite);
+        $req->bindParam(12, $this->id_commentaire);
+
+        $updateGite = $req->execute(array(
+            $this->nom_gite,
+            $this->description_gite,
+            $this->img_gite,
+            $this->nbr_chambre,
+            $this->nbr_sdb,
+            $this->zone_geo,
+            $this->prix,
+            $this->disponible,
+            $this->date_arrivee,
+            $this->date_depart,
+            $this->type_gite,
+            $this->id_commentaire,
+            $id,
+        ));
+
+        if($updateGite){
+            header("Location: confirmer-maj-gite");
+        }else{
+            echo "<p class='alert-danger p-2'>Erreur lors de la mise a jour : Merci de verifié et remplir tous les champs !</p>";
+        }
+    }
 }
 
 
