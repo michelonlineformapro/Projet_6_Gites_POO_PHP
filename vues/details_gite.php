@@ -28,7 +28,7 @@ $regions = $regionClasse->getRegions();
 
 <h1 class="text-center text-danger"><b>DÉTAILS DU GITE</b></h1>
 <div id="gite-by-id">
-    <h2 class="text-center text-warning"><?= $details['nom_gite'] ?></h2>
+    <h2 class="text-center text-info"><?= $details['nom_gite'] ?></h2>
     <h3 class="text-center text-info">Type : <?= $details['type_gite'] ?></h3>
     <div class="row mt-5">
         <div class="col-6">
@@ -102,7 +102,11 @@ $regions = $regionClasse->getRegions();
 </div>
 </div>
 
-<div class="container">
+<div class="container" id="update-form">
+    <div class="text-center">
+        <h3 class="text-danger">METTRE A JOUR LE GITE</h3>
+        <h4 class="text-info"><?= $details['nom_gite'] ?></h4>
+    </div>
     <!--La methode post recup les trriburs name de chaque elements du formulaire a l'aide de la super globale $_POST['name=nom_gite']-->
     <form method="post" enctype="multipart/form-data">
         <div class="mt-3">
@@ -112,7 +116,7 @@ $regions = $regionClasse->getRegions();
 
         <div class="mt-3">
             <label for="description_gite">Description du gite</label>
-            <textarea type="text" id="description_gite" name="description_gite" class="form-control" value="<?= $details['description_gite'] ?>">
+            <textarea type="text" id="description_gite" name="description_gite" rows="10" class="form-control" value="<?= $details['description_gite'] ?>">
                     <?= $details['description_gite'] ?>
             </textarea>
         </div>
@@ -204,7 +208,7 @@ $regions = $regionClasse->getRegions();
         <!--Ce champs est caché Admin na pas renseigner de commentaire ou le mettre a jour sur le gite sa valeur par defaut est 1-->
         <input type="hidden" name="commentaires" value="1">
 
-        <button type="submit" name="btn-ajouter-gite" class="btn btn-outline-success">Mettre le gite</button>
+        <button type="submit" name="btn-ajouter-gite" class="mb-3 btn btn-success">Mettre le gite</button>
     </form>
 
     <?php
@@ -214,5 +218,33 @@ $regions = $regionClasse->getRegions();
     }
     ?>
 </div>
+
+
+<script>
+    /////////////////////////////UPDATE FORM TOGGLE///////////////////
+    let btnUpdateGite = document.getElementById("bntUpdate");
+    let updateForm = document.getElementById("update-form");
+    let blockGiteID = document.getElementById("gite-by-id");
+
+    btnUpdateGite.addEventListener("click", () => {
+        console.log("test de click");
+        updateForm.classList.toggle("show");
+        blockGiteID.classList.toggle("show");
+
+        //element.classList.contains(className);
+
+        if(updateForm.classList.contains("show")){
+            btnUpdateGite.style.backgroundColor = "#789456";
+            btnUpdateGite.style.border = "none";
+            btnUpdateGite.innerHTML = "AFFICHER LE DETAILS";
+        }else{
+            btnUpdateGite.style.backgroundColor = "orange"
+            btnUpdateGite.innerHTML = "AFFICHER LE FORMULAIRE";
+            btnUpdateGite.style.border = "none";
+        }
+    })
+</script>
+
+
 
 

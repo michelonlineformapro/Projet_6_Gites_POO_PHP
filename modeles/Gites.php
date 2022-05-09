@@ -349,7 +349,7 @@ class Gites extends Database {
             echo "<p class='alert-danger p-2'>Merci de remplir le champ type de gite</p>";
         }
 
-        //LES COMMENTAIRES = champs caché avec valeurs par defaut
+        //LES COMMENTAIRES'' = champs caché avec valeurs par defaut
 
         if(isset($_POST['commentaires'])){
             $this->id_commentaire = $_POST['commentaires'];

@@ -66,6 +66,11 @@ else if($url === "administration" && isset($_SESSION['connecter_admin']) && $_SE
 }elseif($url === "confirmer-maj-gite" && isset($_SESSION['connecter_admin']) && $_SESSION['connecter_admin'] === true){
     $title = "Mic location -Mise a jour d' un Gite-";
     require_once "vues/confirmer-maj-gite.php";
+
+}
+//////////////////INSCRIPTION DES UTILISATEURS///////////
+elseif($url === "inscription"){
+    require_once "vues/inscription.php";
 }
 
 

@@ -3,14 +3,60 @@
 
 $rouge: #a23e20;
 
-html,body{
+html {
+  height: 100%;
+}
+
+body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+$size: 20px;
+
+h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  font-weight: normal;
+  width: 100%;
+  text-align: center;
+
+  font-size: 6vw;
+  background: linear-gradient(
+                  -45deg,
+                  #4bc0c8 25%,
+                  #feac5e 25%,
+                  #feac5e 50%,
+                  #4bc0c8 50%,
+                  #4bc0c8 75%,
+                  #feac5e 75%,
+                  #feac5e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: $size $size;
+  background-position: 0 0;
+  animation: stripes 1s linear infinite;
+}
+
+@keyframes stripes {
+  100% {
+    background-position: $size 0, $size 0, $size 0;
+  }
+}
 /*PAGE ACCUEIL + ADMINISTRATION*/
 .card{
   height: 100%;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  transition: 0.2s;
+  border: none;
+  &:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+  }
 }
 
 /*************************LES FORMULAIRE DE CONNEXION********************/
@@ -31,3 +77,21 @@ html,body{
 #form-user.show{
   opacity: 1;
 }
+
+/*********************************Formulaire de mise a jour des gites******************************************/
+#update-form{
+  display: none;
+}
+
+#gite-by-id{
+  display: block;
+}
+
+#update-form.show{
+  display: block;
+}
+
+#gite-by-id.show{
+  display: none;
+}
+

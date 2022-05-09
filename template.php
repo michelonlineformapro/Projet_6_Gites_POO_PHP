@@ -22,7 +22,7 @@
     <?php
     if(isset($_SESSION['connecter_admin']) && $_SESSION['connecter_admin']){
         ?>
-            <div class="container-fluid bg-warning">
+            <div class="mt-3 p-3 container-fluid bg-warning">
                 <?= $content ?>
             </div>
         <?php
