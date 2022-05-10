@@ -9,10 +9,10 @@ $userClasse = new Utilisateurs();
 
 ?>
 <h3 class="text-danger">Vous êtes : </h3>
-<span>
+<div class="text-center" id="btn-parent">
     <a class="btn btn-outline-secondary" id="toggle-admin">Administateur</a>
     <a class="btn btn-outline-info" id="toggle-user">Client</a>
-</span>
+</div>
 
 
 <div id="form-admin">

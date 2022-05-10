@@ -263,14 +263,14 @@ class Gites extends Database {
         $db = $this->getPDO();
         //On verifie tous les champs du formulaires existe et ne sont pas vide
         //On assigne les $_POST[] = attribut HTML name="" au propriétés privées (variables)
-        if(isset($_POST['nom_gite'])){
+        if(isset($_POST['nom_gite']) && !empty($_POST['nom_gite'])){
             $this->nom_gite = trim(htmlspecialchars($_POST['nom_gite']));
         }else{
             echo "<p class='alert-danger p-2'>Merci de remplir le champ nom du gite</p>";
         }
 
         //LA DESCRIPTION
-        if(isset($_POST['description_gite'])){
+        if(isset($_POST['description_gite']) && !empty($_POST['description_gite'])){
             $this->description_gite = trim(htmlspecialchars($_POST['description_gite']));
         }else{
             echo "<p class='alert-danger p-2'>Merci de remplir le champ description du gite</p>";
