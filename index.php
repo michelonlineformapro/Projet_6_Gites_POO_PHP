@@ -71,6 +71,9 @@ else if($url === "administration" && isset($_SESSION['connecter_admin']) && $_SE
 //////////////////INSCRIPTION DES UTILISATEURS///////////
 elseif($url === "inscription"){
     require_once "vues/inscription.php";
+}elseif($url === "ajouter_commentaire" && isset($_SESSION['connecter_user']) && $_SESSION['connecter_user'] === true){
+    $title = "Mic location -Ajouter commentaire-";
+    require_once "vues/ajouter_commentaire.php";
 }
 
 

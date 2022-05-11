@@ -68,7 +68,7 @@ $commentaires = $commentaireClasse->getComments();
                 //Si on est connecté en tant qu'utilisateur = on affiche les boutons ajouter commentaire + reserver
                 if (isset($_SESSION['connecter_user']) && $_SESSION['connecter_user'] === true) {
                     ?>
-                    <a href="ajouter_commentaire?id=<?= $details['id_gite'] ?>" class="btn btn-outline-danger mt-2">Ajouter
+                    <a href="ajouter_commentaire?id_gite=<?= $details['id_gite'] ?>" class="btn btn-outline-danger mt-2">Ajouter
                         un commentaire</a>
                     <a href="reservation?id_gite=<?= $details['id_gite'] ?>"
                        class="btn btn-outline-info mt-2">RESERVER</a>
@@ -252,9 +252,9 @@ if (isset($_SESSION['connecter_admin']) && $_SESSION['connecter_admin'] === true
     <h4 class="text-success">COMMENTAIRES</h4>
     <ul class="list-group">
         <?php
-        //On parcours la table commentaires et on affiche ses derniers
-        foreach ($commentaireClasse->getComments() as $alias) {
-            if ($alias) {
+        //On parcours la table commentaires et on affiche ces derniers
+        foreach ($commentaires as $alias) {
+
                 ?>
 
                 <li class="list-group-item">
@@ -264,9 +264,7 @@ if (isset($_SESSION['connecter_admin']) && $_SESSION['connecter_admin'] === true
                             class="text-info"><?= $alias['contenus_commentaire'] ?></b></li>
 
                 <?php
-            } else {
-                echo "aucun commentaire pour ce gite";
-            }
+
         }
         ?>
     </ul>
@@ -275,16 +273,26 @@ if (isset($_SESSION['connecter_admin']) && $_SESSION['connecter_admin'] === true
 
 <script>
     /////////////////////////////UPDATE FORM TOGGLE///////////////////
+    //Au clic sur le bouton update : on passe du formulaire au details du gites
+
+
+    //Stock des attribut id HTML dans des variables
     let btnUpdateGite = document.getElementById("bntUpdate");
     let updateForm = document.getElementById("update-form");
     let blockGiteID = document.getElementById("gite-by-id");
 
+    //Au clci dur le bouton mettre a jour
     btnUpdateGite.addEventListener("click", () => {
         console.log("test de click");
+        //On ajoute - retire la classe css .show
         updateForm.classList.toggle("show");
         blockGiteID.classList.toggle("show");
 
         //element.classList.contains(className);
+
+        //Si le formulaire possède la classe css .show
+        //On change la couleur du bouton + le texte
+        //Sinon l'inverse
 
         if (updateForm.classList.contains("show")) {
             btnUpdateGite.style.backgroundColor = "#789456";
