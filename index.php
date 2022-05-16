@@ -76,9 +76,15 @@ elseif($url === "inscription"){
     require_once "vues/ajouter_commentaire.php";
 }
 
+//Page de reservation
+elseif($url === "reservation"){
+    require_once "vues/reservation.php";
+}
+
 
 //Si la route $url n'est pas formée de [#: A-Z a-z O-9] soit index.php?url=NON VALIDE
 //On effectue une redirection
+
 elseif($url !=  '#:@&-[\w]+)#'){
     //On redirige vers la page d'accueil
     header("Location: accueil");

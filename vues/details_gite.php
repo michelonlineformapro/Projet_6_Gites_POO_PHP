@@ -127,7 +127,7 @@ if (isset($_SESSION['connecter_admin']) && $_SESSION['connecter_admin'] === true
             <h3 class="text-danger">METTRE A JOUR LE GITE</h3>
             <h4 class="text-info"><?= $details['nom_gite'] ?></h4>
         </div>
-        <!--La methode post recup les trriburs name de chaque elements du formulaire a l'aide de la super globale $_POST['name=nom_gite']-->
+        <!--La methode post recup les attribut name de chaque elements du formulaire a l'aide de la super globale $_POST['name=nom_gite']-->
         <form method="post" enctype="multipart/form-data">
             <div class="mt-3">
                 <label for="nom_gite">Nom du gite</label>

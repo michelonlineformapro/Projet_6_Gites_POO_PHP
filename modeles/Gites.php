@@ -22,6 +22,7 @@ class Gites extends Database {
 
     private $id_commentaire;
 
+    //////////////////////////CONNECTER EN TANT QU'ADMINISTRATEUR////////////
     //Cette methode est destinée a recupérer tous les gites de la table phpMyADmin et a etre afficher sur le tableau de bord Administrateur
     public function getGites(){
         //Appel de la methode getPDO de la classe MERE Database.php
@@ -419,8 +420,9 @@ class Gites extends Database {
 
 
     ///////////////////////////////////////QUAND ON EST CONNECTER UTILISATEUR OU SIMPLE VISITEUR////////////////////////
+
     public function getGiteDisponible(){
-        //Recupere de la date du jour grace a php date()
+        //Recuperer la date du jour grace a php date()
         /*
          * Retourne une date sous forme d'une chaîne, au format donné par le paramètre format,
          * fournie par le paramètre timestamp ou la date et l'heure courantes si aucun timestamp n'est fourni.
@@ -431,32 +433,33 @@ class Gites extends Database {
         $db = $this->getPDO();
 
         //la requète de selection + jointure + prediquat WHERE filtre de gite par date et bool disponible = true
-        $sql = "SELECT * FROM gites 
-                INNER JOIN categories ON gites.gite_categorie = categories.id_categorie 
+        $sql = "SELECT * FROM gites
+                INNER JOIN categories ON gites.gite_categorie = categories.id_categorie
                 INNER JOIN regions ON gites.zone_geo = regions.id_region
-                WHERE date_depart < '".$today."' AND disponible = 1";
-        //parcours de la table gites filtrées
+                WHERE date_depart < '".$today."' AND disponible = 1
+            ";
         $disponible = $db->query($sql);
         return $disponible;
     }
 
     public function getGiteIndisponible(){
-        //Recupere de la date du jour grace a php date()
+        //Recuperer la date du jour grace a php date()
         /*
          * Retourne une date sous forme d'une chaîne, au format donné par le paramètre format,
          * fournie par le paramètre timestamp ou la date et l'heure courantes si aucun timestamp n'est fourni.
          * En d'autres termes, le paramètre timestamp est optionnel et vaut par défaut la valeur de la fonction time().
          */
         $today = date('Y-m-d');
-        //La connexion via la classe mere Database
+        //La connexion a la bdd via la classe mere Database
         $db = $this->getPDO();
 
-        //la requete de selection (inverse) + jointure + date jour < date de depart
-        $sql = "SELECT * FROM gites 
-                INNER JOIN categories ON gites.gite_categorie = categories.id_categorie 
+
+        //la requète de selection + jointure + prediquat WHERE filtre de gite par date et bool disponible = true
+        $sql = "SELECT * FROM gites
+                INNER JOIN categories ON gites.gite_categorie = categories.id_categorie
                 INNER JOIN regions ON gites.zone_geo = regions.id_region
-                WHERE date_depart > '".$today."' AND disponible = 1";
-        //parcours de la table gites PhpMyAdmin filtrées
+                WHERE date_depart > '".$today."' AND disponible = 1
+            ";
         $indisponible = $db->query($sql);
         return $indisponible;
     }
