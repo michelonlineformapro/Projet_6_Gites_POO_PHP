@@ -70,6 +70,7 @@ else if($url === "administration" && isset($_SESSION['connecter_admin']) && $_SE
 }
 //////////////////INSCRIPTION DES UTILISATEURS///////////
 elseif($url === "inscription"){
+    $title = "Mic location -Inscription-";
     require_once "vues/inscription.php";
 }elseif($url === "ajouter_commentaire" && isset($_SESSION['connecter_user']) && $_SESSION['connecter_user'] === true){
     $title = "Mic location -Ajouter commentaire-";
@@ -78,6 +79,7 @@ elseif($url === "inscription"){
 
 //Page de reservation
 elseif($url === "reservation"){
+    $title = "Mic location -Reserver un gite-";
     require_once "vues/reservation.php";
 }
 

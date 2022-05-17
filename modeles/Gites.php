@@ -463,6 +463,28 @@ class Gites extends Database {
         $indisponible = $db->query($sql);
         return $indisponible;
     }
+
+//////////////////////////////////////RESERVATION DU GITE ET UPDATE DES DATES//////////////
+    public function updateEmailDateGite(){
+        $db = $this->getPDO();
+
+        $dateArrivee = $_POST['date_arrivee'];
+        $dateDepart = $_POST['date_depart'];
+
+        $sqlUpdate = "UPDATE gites SET date_arrivee = ?, date_depart = ? WHERE id_gite = ?";
+        $changeStatus = $db->prepare($sqlUpdate);
+        $idUpdate = $_GET['id_gite'];
+
+        $changeStatus->bindParam(1, $dateArrivee);
+        $changeStatus->bindParam(2, $dateDepart);
+        $changeStatus->bindParam(3, $idUpdate);
+
+        //executer les nouvelles date
+        $changeStatus->execute();
+    }
+
+
+
 }
 
 

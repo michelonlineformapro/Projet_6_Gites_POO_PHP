@@ -1,0 +1,19 @@
+{
+    "name": "micpi/gites_poo_php",
+    "description": "php poo",
+    "autoload": {
+        "psr-4": {
+            "Micpi\\GitesPooPhp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "michel michael",
+            "email": "m.michel@onlineformapro.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "phpmailer/phpmailer": "dev-master"
+    }
+}

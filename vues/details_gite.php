@@ -70,8 +70,7 @@ $commentaires = $commentaireClasse->getComments();
                     ?>
                     <a href="ajouter_commentaire?id_gite=<?= $details['id_gite'] ?>" class="btn btn-outline-danger mt-2">Ajouter
                         un commentaire</a>
-                    <a href="reservation?id_gite=<?= $details['id_gite'] ?>"
-                       class="btn btn-outline-info mt-2">RESERVER</a>
+                    <a href="reservation?id_gite=<?= $details['id_gite'] ?>" class="btn btn-outline-info mt-2">RESERVER</a>
                     <?php
                 } else {
                     ?>
