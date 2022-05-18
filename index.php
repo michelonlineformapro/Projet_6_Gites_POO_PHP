@@ -82,6 +82,11 @@ elseif($url === "reservation"){
     $title = "Mic location -Reserver un gite-";
     require_once "vues/reservation.php";
 }
+//Confirmation de reservation
+elseif($url === "confirmation_reservation" && isset($_GET['id_gite']) && $_GET['id_gite'] > 0){
+    $title = "Mic location -Confirmation de reservation -";
+    require_once "vues/confirmation_reservation.php";
+}
 
 
 //Si la route $url n'est pas formée de [#: A-Z a-z O-9] soit index.php?url=NON VALIDE

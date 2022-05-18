@@ -53,17 +53,14 @@ class Reservation extends Gites
             $dateArrivee = $_POST['date_arrivee'];
             $dateDepart = $_POST['date_depart'];
 
-            //Le booleen pour valider l'envoi du mail
 
-            //On stock la date du jour
-            $today = date("Y-m-d");
 
-            //Appel de la methode de mise a jour de la classe gite
-            $this->updateEmailDateGite();
+
 
             $emailID = $giteDetails['id_gite'];
             //Url de retour sur notre site
-            $url = "http://localhost/Gites_Poo_PHP/confirmer-reservation?id=$emailID";
+            $url = "http://localhost/Gites_Poo_PHP/confirmation_reservation?id_gite=$emailID";
+            //http://localhost/Gites_Poo_PHP/index.php?url=confirmation_reservation?id_gite=$emailID"
             $mail->Body    = '
                <!DOCTYPE html>
                     <html lang="fr">
@@ -111,6 +108,10 @@ class Reservation extends Gites
             //https://developer.mozilla.org/fr/docs/Web/HTTP/Headers/Content-Type
             $mail->body = "Content-type: text/html;charset=utf8";
 
+            //Le booleen pour valider l'envoi du mail
+
+            //On stock la date du jour
+            $today = date("Y-m-d");
             //La d'arrivee doit etre > a la date du jour
             if($dateArrivee < $today){
                 echo "<p class='alert alert-danger'>erreur : la date d'arrivée' doit etre > a la date du jour !</p>";
@@ -120,6 +121,8 @@ class Reservation extends Gites
                 //Si les dates sont correct = on evoie email
                 //Avec la classe PhpMailer
                 $mail->send();
+                //Appel de la methode de mise a jour de la classe gite
+                $this->updateEmailDateGite();
                 //On cache le formulaire
                 ?>
                 <style>
